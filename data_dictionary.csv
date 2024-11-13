@@ -7,8 +7,8 @@ therm_pref,int64,Thermal preference vote (1 = cooler; 2 = no change; 3 = warmer)
 therm_accep,int64,Thermal acceptability vote (1 = acceptable; 2 = unacceptable).,2,1 - 2,,
 met,float64,"Activity level of participants in the last 10 minutes prior to observation in 'met' (0.8 = lying down; 1.0 = sitting, calm; 1.2 = standing, relaxed; 1.6 = light activity, standing; 2.0 = medium activity; standing; 1.7 = walking around).",6,0.8 - 2.0,,
 air_quality,int64,Room air quality vote (1 = very stale; 2 = stale; 3 = slightly stale; 4 = just right; 5 = slightly fresh; 6 = fresh; 7 = very fresh).,7,1 - 7,,
-air_velocity,int64,Room airflow vote (1 = very calm; 2 = calm; 3 = slightly calm; 4 = just right; 5 = slightly airy; 6 = airy; 7 = very airy).,7,1 - 7,,
-humidity,int64,Room humidity vote (1 = very dry; 2 = dry; 3 = slightly dry; 4 = just right; 5 = slightly moist; 6 = moist; 7 = very moist).,7,1 - 7,,
+air_velocity,int64,Room airflow vote (1 = very still; 2 = still; 3 = slightly still; 4 = just right; 5 = slightly breezy; 6 = breezy; 7 = very breezy).,7,1 - 7,,
+humidity,int64,Room humidity vote (1 = very dry; 2 = dry; 3 = slightly dry; 4 = just right; 5 = slightly humid; 6 = humid; 7 = very humid).,7,1 - 7,,
 overall_comfort,float64,"Overall comfort vote in terms of temperature, air and humidity (1 = very uncomfortable; 2 = uncomfortable; 3 = slightly uncomfortable; 4 = slightly comfortable; 5 = comfortable; 6 = very comfortable).",6,1.0 - 6.0,,
 tiredness,int64,Rate of fatigue (1 = very tired; 2 = tired; 3 = a little tired; 4 = well rested).,4,1 - 4,,
 age,int64,Age of the participants in years.,,21 - 67,37.76098535,15.62474663
