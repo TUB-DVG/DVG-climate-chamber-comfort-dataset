@@ -1,0 +1,20 @@
+"device_id","device_no","name","model","sensor","frequency","room_id","location"
+"2243032827",FBT001,Fitbit,Sense 2,heart rate,"1sec",0,wrist
+"2357583268",FBT023,Fitbit,Sense,heart rate,"1sec",1,wrist
+"2362495010",FBT045,Fitbit,Sense,heart rate,"1sec",1,wrist
+"2361968144",FBT067,Fitbit,Sense,heart rate,"1sec",2,wrist
+"2363167819",FBT089,Fitbit,Sense,heart rate,"1sec",2,wrist
+"130000007EC0D641",IBW135,iButton,DS1922L,skin temperature,"30secs",1,wrist
+A0000000800D8741,IBW246,iButton,DS1922L,skin temperature,"30secs",1,wrist
+C0000000800DFC41,IBW357,iButton,DS1922L,skin temperature,"30secs",2,wrist
+"210000008009C241",IBW468,iButton,DS1922L,skin temperature,"30secs",2,wrist
+"43000000800DCE41",IBA579,iButton,DS1922L,skin temperature,"30secs",1,ankle
+"43000000800FFC41",IBA680,iButton,DS1922L,skin temperature,"30secs",1,ankle
+"57000000800E5B41",IBA791,iButton,DS1922L,skin temperature,"30secs",2,ankle
+"8500000080112841",IBA802,iButton,DS1922L,skin temperature,"30secs",2,ankle
+ELS_RM12349,ELS100,ELSYS,ELSYS,room temperature and humidity,"5mins",1,"0.1-1.7AGL"
+ELS_RM5678A,ELS200,ELSYS,ELSYS,room temperature and humidity,"5mins",2,"0.1-1.7AGL"
+TESTO480,TESTO100,TESTO480,TESTO480,"velocity, CO2, globe, air temp, and humidity","1min",1,"1.1mAGL"
+TESTO400,TESTO200,TESTO400,TESTO400,"velocity, CO2, globe, air temp, and humidity","1min",2,"1.1mAGL"
+WEA100,WEA100,Weather station,Station_Aachen-Orsbach,outside temperature and humidity,"1hour",1,Station_Aachen-Orsbach
+WEA200,WEA200,Weather station,Station_Aachen-Orsbach,outside temperature and humidity,"1hour",2,Station_Aachen-Orsbach
