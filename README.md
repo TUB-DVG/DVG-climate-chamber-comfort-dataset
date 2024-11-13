@@ -7,7 +7,7 @@ This repository contains data collected during a thermal comfort study at the cl
 Data was collected under controlled climate chamber conditions. Participants from diverse demographic groups were exposed to varying indoor conditions, such as temperature, humidity. During the study, participants answered a series of questions regarding their comfort levels, thermal preferences, and other relevant conditions at 10-minute interval. These questions aimed to capture subjective comfort perceptions alongside the environmental metrics recorded in the climate chamber. The questionaire used to collect subjective respnses is available [here](SubjectiveQs.pdf) for reference.
 
 ## Dataset Description
-The [raw datasets](pcmproject_climatechamber_exp_raw_dataset) contains data collected from multiple devices and surveys throughout the experiment. Each file in the folder represents a different data source, ranging from environmental conditions to participant feedback and physiological data.
+The [raw datasets](data/pcmproject_climatechamber_exp_raw_dataset) contains data collected from multiple devices and surveys throughout the experiment. Each file in the folder represents a different data source, ranging from environmental conditions to participant feedback and physiological data.
 
 - **device_data.csv**: Contains information on the measurement devices used during the study.
 - **elsys.csv**: Records room temperature and humidity data from ELSYS sensors at different height above ground level.
