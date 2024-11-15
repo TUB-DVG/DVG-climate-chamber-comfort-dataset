@@ -23,15 +23,14 @@ The [raw datasets](data/pcmproject_climatechamber_exp_raw_dataset) contains data
 The [final dataset](data/pcm_climate_chamber_final_data.csv) contains 1,502 samples with 42 columns representing various user attributes and environmental conditions. Below is a summary of key variables. A detailed description of the columns is provided in the [Data Dictionary](data_dictionary.csv).
 
 - **lastdata**: Timestamp of each observation (YYYY-MM-DD HH:MM:SS).
-- **therm_sens**: Thermal sensation vote, on a scale from cold (1) to hot (7)
-- **therm_comfort**: Thermal comfort vote, from very uncomfortable (1) to very comfortable (6)
-- **therm_pref**: Thermal preference (1 = cooler, 2 = no change, 3 = warmer)
-- **met**: Activity level (MET) of the partiipants in the last 10 minutes
+- **therm_sens**: Thermal sensation vote, on a scale from cold (1) to hot (7).
+- **therm_comfort**: Thermal comfort vote, from very uncomfortable (1) to very comfortable (6).
+- **therm_pref**: Thermal preference (1 = cooler, 2 = no change, 3 = warmer).
+- **met**: Activity level (MET) of the partiipants in the last 10 minutes.
 - **clo**: Clothing Value (CLO) of the participants in the last 10 minutes. 
 - **Environmental and physiological metrics**: Various environmental parameters (e.g., room temperature, humidity, CO₂, air velocity) and physiological metrics (e.g., heart rate, wrist and ankle skin temperatures). 
 ### Data Format
 The data is provided in a CSV format, where each row represents a single observation. The variables value are averaged over the 10 minutes prior to the timestamp.
-
 
 ## Acknowledgments
 Special thanks to RWTH Aachen University for providing access to the climate chamber facilities and supporting data collection efforts. Also to the Einstein Center Digital Future (ECDF), Berlin for funding this project.
