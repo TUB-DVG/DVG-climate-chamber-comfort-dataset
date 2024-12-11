@@ -114,7 +114,7 @@ def train_models(data_path, output_dir):
             cv_accuracy = grid_search.best_score_
                         
             #Saving models as pickle
-            #save_model(best_model, os.path.join(output_dir, f"{model_name}_best_model-{feature_set_name}.pkl"))
+            save_model(best_model, os.path.join(output_dir, f"{model_name}_best_model-{feature_set_name}.pkl"))
 
             y_pred = best_model.predict(X_test)
             y_proba = best_model.predict_proba(X_test)
