@@ -1,41 +1,169 @@
-# Climate Chamber Thermal Comfort Dataset - TUB-DVG group
+# **DVG Climate Chamber Analysis and Model Training**
 
-## Overview
-This repository contains data collected during a thermal comfort study at the climate chamber of RWTH Aachen University, Germany. The study, conducted between November 2023 and January 2024, aimed to collect user subjective responses to different room climate conditions. This dataset is available for research and analysis in indoor environmental quality, thermal comfort, and related fields.
+## **Project Overview**  
+This project focuses on analyzing climate chamber data, preprocessing it, and building machine learning models to predict thermal preference based on the data collected during a thermal comfort study at the climate chamber of RWTH Aachen University, Germany. The repository includes notebooks for Exploratory Data Analysis (EDA), scripts for model training, result analysis, and pre-trained models for quick predictions.
 
-## Data Collection Process
-Data was collected under controlled climate chamber conditions. Participants from diverse demographic groups were exposed to varying indoor conditions, such as temperature, humidity. During the study, participants answered a series of questions regarding their comfort levels, thermal preferences, and other relevant conditions at 10-minute interval. These questions aimed to capture subjective comfort perceptions alongside the environmental metrics recorded in the climate chamber. The questionaire used to collect subjective responses is available [here](SubjectiveQs.pdf) for reference.
+---
 
-## Dataset Description
-The [raw datasets](data/pcmproject_climatechamber_exp_raw_dataset) contains data collected from multiple devices and surveys throughout the experiment. Each file in the folder represents a different data source, ranging from environmental conditions to participant feedback and physiological data.
+## **Repository Structure**  
 
-- **device_data.csv**: Contains information on the measurement devices used during the study.
-- **elsys.csv**: Records room temperature and humidity data from ELSYS sensors at different height above ground level.
-- **experiment_data.csv**: Lists the specific dates on which each participant took part in the study.
-- **feedback.csv**: Subjective feedback from participants, collected at 10-minute intervals with timestamps.
-- **heartrate.csv**: Contains heart rate data collected from Fitbit devices.
-- **ibutton_ankle.csv**: Ankle skin temperature data from iButton sensors.
-- **ibutton_wrist.csv**: Wrist skin temperature data from iButton sensors.
-- **testo.csv**: Includes measurements of CO₂, temperature, and humidity from Testo sensors.
-- **user_data.csv**: Contains demographic and physical information of participants.
-- **weather.csv**: Outdoor weather conditions during the study period.
+```
+DVG-CLIMATE-CHAMBER-COMPOSITION/
+│
+├── EDA_notebooks/            # Notebooks for exploratory data analysis
+│   ├── preprocessing.ipynb   # Data preprocessing notebook
+│   └── rawdata_analysis.ipynb # Initial raw data analysis
+│
+├── EDA_plots/                # Folder for visualizations and EDA-related plots
+│
+├── model_scripts/            # Scripts for training and evaluating models
+│   ├── config.py             # Configuration for model parameters
+│   ├── model_train.py        # Model training script
+│   └── plot_results.ipynb    # Notebook to visualize model results
+│
+├── results/                  # Saved models and result files
+│   ├── ET_best_model-F_accessible.pkl    # Pre-trained ExtraTrees model (accessible)
+│   ├── ET_best_model-F_all.pkl           # ExtraTrees model (all features)
+│   ├── SVC_best_model-F_accessible.pkl   # SVC model (accessible features)
+│   ├── model_results.csv                 # Results in CSV format
+│   ├── model_results.json                # Results in JSON format
+│   ├── pred_results.json                 # Prediction results
+│   └── ...                               # Additional models and results
+│
+├── results_plots/            # Plots generated from model predictions and evaluations
+│
+├── data/                     # Placeholder for datasets
+├── data_dictionary.csv       # Metadata or description of the dataset columns
+├── requirements.txt          # Python dependencies
+├── README.md                 # Project documentation
+└── SubjectiveQs.pdf          # Supporting subjective questions
+```
 
-The [final dataset](data/pcm_climate_chamber_final_data.csv) contains 1,502 samples with 42 columns representing various user attributes and environmental conditions. Below is a summary of key variables. A detailed description of the columns is provided in the [Data Dictionary](data_dictionary.csv).
+---
 
-- **lastdata**: Timestamp of each observation (YYYY-MM-DD HH:MM:SS).
-- **therm_sens**: Thermal sensation vote, on a scale from cold (1) to hot (7).
-- **therm_comfort**: Thermal comfort vote, from very uncomfortable (1) to very comfortable (6).
-- **therm_pref**: Thermal preference (1 = cooler, 2 = no change, 3 = warmer).
-- **met**: Activity level (MET) of the partiipants in the last 10 minutes.
-- **clo**: Clothing Value (CLO) of the participants in the last 10 minutes. 
-- **Environmental and physiological metrics**: Various environmental parameters (e.g., room temperature, humidity, CO₂, air velocity) and physiological metrics (e.g., heart rate, wrist and ankle skin temperatures). 
-### Data Format
-The data is provided in a CSV format, where each row represents a single observation. The variables value are averaged over the 10 minutes prior to the timestamp.
+## **Setup Instructions**
 
-## Acknowledgments
-Special thanks to RWTH Aachen University for providing access to the climate chamber facilities and supporting data collection efforts. Also to the Einstein Center Digital Future (ECDF), Berlin for funding this project.
+### **1. Clone the Repository**
+```bash
+git clone https://github.com/username/DVG-CLIMATE-CHAMBER-COMPOSITION.git
+cd DVG-CLIMATE-CHAMBER-COMPOSITION
+```
 
-## Contact
-For questions or further information, please reach out to Julianah Odeyemi at j.odeyemi@tu-berlin.de.
+### **2. Set Up the Environment**  
+Ensure you have Python 3.8+ installed. Install the required dependencies:
+```bash
+pip install -r requirements.txt
+```
 
+---
 
+## **Data Preprocessing and Analysis**
+
+- **Preprocessing**: Run the `preprocessing.ipynb` notebook to clean and preprocess the raw climate chamber data.  
+- **Raw Data Analysis**: Use `rawdata_analysis.ipynb` for initial EDA and insights into the dataset.
+
+---
+
+## **Model Training**
+
+The script `model_train.py` trains machine learning models, such as ExtraTrees and SVC. The results are saved in the `results/` folder as `.pkl` files for pre-trained models.
+
+Run the script as follows:
+```bash
+python model_scripts/model_train.py
+```
+
+---
+
+## **Results and Predictions**
+
+- **Pre-trained Models**:  
+   Pre-trained models are available in the `results/` folder. These models include:  
+   - `ET_best_model-F_accessible.pkl`  
+   - `SVC_best_model-F_accessible.pkl`  
+
+- **Visualizations**:  
+   Use `plot_results.ipynb` to visualize model performance and generate comparison plots.
+
+---
+
+## **Usage**
+
+You can load the pre-trained models for inference as follows:
+
+```python
+import pickle
+
+# Load a pre-trained model
+with open("results/ET_best_model-F_accessible.pkl", "rb") as model_file:
+    model = pickle.load(model_file)
+
+# Example prediction
+example_input = [[1.2, 3.4, 5.6, 7.8]]  # Replace with actual feature values
+prediction = model.predict(example_input)
+print("Prediction:", prediction)
+```
+
+---
+
+## **Results and Outputs**
+
+1. **Model Results**:
+   - Metrics like accuracy, precision, and recall are saved in `model_results.json`.
+   - CSV format results are available in `model_results.csv`.
+
+2. **Plots**:
+   - Visualizations for predictions and performance can be found in the `results_plots/` folder.
+
+---
+
+## **Dependencies**
+
+The project uses the following Python libraries:
+- `numpy`
+- `pandas`
+- `scikit-learn`
+- `matplotlib`
+- `seaborn`
+
+Install all dependencies via:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## **Dataset**
+
+- A detailed description of the dataset's features can be found in `data_dictionary.csv`.  
+- Add or download the dataset into the `data/` folder.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+## **Contributions**
+
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to the branch and submit a Pull Request.
+
+---
+
+## **Contact**
+
+For questions or feedback, feel free to reach out via GitHub Issues or email.
+
+---
