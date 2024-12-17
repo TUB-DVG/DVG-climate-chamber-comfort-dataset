@@ -64,7 +64,6 @@ def train_models(data_path, output_dir):
 
         # Pipeline for feature preprocess
         cat_attr = X.select_dtypes(include=['object']).columns.tolist()
-        #cat_attr = ['sex']
         num_attr = list(X.drop(columns=cat_attr))
 
         num_pipeline = Pipeline([
@@ -114,7 +113,7 @@ def train_models(data_path, output_dir):
             cv_accuracy = grid_search.best_score_
                         
             #Saving models as pickle
-            #save_model(best_model, os.path.join(output_dir, f"{model_name}_best_model-{feature_set_name}.pkl"))
+            save_model(best_model, os.path.join(output_dir, f"{model_name}_best_model-{feature_set_name}.pkl"))
 
             y_pred = best_model.predict(X_test)
             y_proba = best_model.predict_proba(X_test)
@@ -133,7 +132,7 @@ def train_models(data_path, output_dir):
 
             }
 
-            #save y_test and y_pred
+            #save y_test, y_pred and y_proba
             results_y[feature_set_name][model_name] = {
                 'y_test': y_test.tolist(),
                 'y_pred': y_pred.tolist(),
