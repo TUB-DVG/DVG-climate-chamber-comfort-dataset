@@ -1,13 +1,13 @@
 # Climate Chamber Thermal Comfort Dataset - TUB-DVG group
 
 ## Overview
-This repository contains data collected during a thermal comfort study at the climate chamber of RWTH Aachen University, Germany. The study, conducted between November 2023 and January 2024, aimed to collect user subjective responses to different room climate conditions. This dataset is available for research and analysis in indoor environmental quality, thermal comfort, and related fields.
+This folder contains data collected during a thermal comfort study at the climate chamber of RWTH Aachen University, Germany. The study, conducted between November 2023 and January 2024, aimed to collect user subjective responses to different room climate conditions. This dataset is available for research and analysis in indoor environmental quality, thermal comfort, and related fields.
 
 ## Data Collection Process
 Data was collected under controlled climate chamber conditions. Participants from diverse demographic groups were exposed to varying indoor conditions, such as temperature, humidity. During the study, participants answered a series of questions regarding their comfort levels, thermal preferences, and other relevant conditions at 10-minute interval. These questions aimed to capture subjective comfort perceptions alongside the environmental metrics recorded in the climate chamber. The questionaire used to collect subjective responses is available [here](SubjectiveQs.pdf) for reference.
 
 ## Dataset Description
-The [raw datasets](data/pcmproject_climatechamber_exp_raw_dataset) contains data collected from multiple devices and surveys throughout the experiment. Each file in the folder represents a different data source, ranging from environmental conditions to participant feedback and physiological data.
+The [raw datasets](pcmproject_climatechamber_exp_raw_dataset) contains data collected from multiple devices and surveys throughout the experiment. Each file in the folder represents a different data source, ranging from environmental conditions to participant feedback and physiological data.
 
 - **device_data.csv**: Contains information on the measurement devices used during the study.
 - **elsys.csv**: Records room temperature and humidity data from ELSYS sensors at different height above ground level.
@@ -20,7 +20,7 @@ The [raw datasets](data/pcmproject_climatechamber_exp_raw_dataset) contains data
 - **user_data.csv**: Contains demographic and physical information of participants.
 - **weather.csv**: Outdoor weather conditions during the study period.
 
-The [final dataset](data/pcm_climate_chamber_final_data.csv) contains 1,502 samples with 42 columns representing various user attributes and environmental conditions. Below is a summary of key variables. A detailed description of the columns is provided in the [Data Dictionary](data_dictionary.csv).
+The [final dataset](pcm_climate_chamber_final_data.csv) contains 1,502 samples with 42 columns representing various user attributes and environmental conditions. Below is a summary of key variables. A detailed description of the columns is provided in the [Data Dictionary](data_dictionary.csv).
 
 - **lastdata**: Timestamp of each observation (YYYY-MM-DD HH:MM:SS).
 - **therm_sens**: Thermal sensation vote, on a scale from cold (1) to hot (7).
