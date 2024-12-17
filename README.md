@@ -1,9 +1,7 @@
-# **DVG Climate Chamber Comfort**
+# **DVG Climate Chamber Comfort dataset**
 
 ## **Project Overview**  
-This project focuses on analyzing climate chamber data, preprocessing it, and building machine learning models to predict thermal preference based on the data collected during a thermal comfort study at the climate chamber of RWTH Aachen University, Germany. The repository includes notebooks for Exploratory Data Analysis (EDA), scripts for model training, result analysis, and pre-trained models for quick predictions.
-
----
+This project focuses on analyzing climate chamber data, preprocessing it, and building machine learning models to predict thermal preference based on the data collected during a thermal comfort study at the climate chamber of RWTH Aachen University, Germany. The repository includes notebooks for Exploratory Data Analysis (EDA), scripts for model training, result analysis, and pre-trained models.
 
 ## **Repository Structure**  
 
@@ -45,26 +43,16 @@ DVG-CLIMATE-CHAMBER-COMFORT-DATASET/
 └── README.md                                    # Project documentation
 
 ```
-
----
-
 ## **How to use**
 
-### **1. Clone the Repository**
+### **Clone the Repository**
 ```bash
-git clone https://github.com/username/DVG-CLIMATE-CHAMBER-COMFORT-DATASET.git
-cd DVG-CLIMATE-CHAMBER-COMFORT-DATASET
+git clone https://github.com/TUB-DVG/DVG-climate-chamber-comfort-dataset.git
+cd DVG-climate-chamber-comfort-dataset
 ```
 
-### **2. Set Up the Environment**  
-Ensure you have Python 3.8+ installed. Install the required dependencies:
-```bash
-pip install -r requirements.txt
-```
----
-
-## **Dependencies**
-
+### **Dependencies**  
+Ensure you have Python 3.8+ installed. 
 The project uses the following Python libraries:
 - `numpy`
 - `pandas`
@@ -72,20 +60,23 @@ The project uses the following Python libraries:
 - `matplotlib`
 - `seaborn`
 
----
+Install the required dependencies:
+```bash
+pip install -r requirements.txt
+```
 
 ## **Data Preprocessing and Analysis**
 
-- **Preprocessing**: Run the `preprocessing.ipynb` notebook to clean and preprocess the raw climate chamber data.  
-- **Raw Data Analysis**: Use `rawdata_analysis.ipynb` for initial EDA and insights into the dataset.
-
----
+- **Raw Data Analysis**: Use `rawdata_analysis.ipynb` for initial EDA.
+- **Preprocessing**: Run the `preprocessing.ipynb` notebook to clean and preprocess the raw data.  
 
 ## **Model Training**
 
 The script `model_train.py` trains machine learning models (ExtraTrees and SVC). The results are saved in the `results/` folder as `.pkl` files for pre-trained models and `plot_results.ipynb` to visualize model performance.
---data_path: Path to the processed data file
---output_dir: Directory where model outputs and results will be saved
+
+-data_path: Path to the processed data file
+
+-output_dir: Directory where model outputs and results will be saved
 
 Run the script as follows:
 ```bash
@@ -93,14 +84,15 @@ python model_scripts/model_train.py --data_path ./data/processed_data.csv --outp
 
 ```
 
----
-
 ## **Usage**
 - **Feature Sets**:
 The project uses three predefined feature sets for training the models. When using the pre-trained models or running predictions, input features must match one of these formats:
-    -F_fanger: ['rt', 'mrt', 'v', 'rh', 'clo', 'met'],
-    -F_all: ['met', 'age', 'sex', 'clo', 'CO2', 'rh', 'rt','out_t', 'out_rh', 'w_st', 'a_st', 'hr', 'v', 'bmi'],
-    -F_accessible: ['met', 'age', 'sex', 'rh', 'rt', 'out_t', 'out_rh', 'w_st', 'hr', 'bmi']
+
+    -`F_fanger: ['rt', 'mrt', 'v', 'rh', 'clo', 'met']`
+  
+    -`F_all: ['met', 'age', 'sex', 'clo', 'CO2', 'rh', 'rt','out_t', 'out_rh', 'w_st', 'a_st', 'hr', 'v', 'bmi']`
+  
+    -`F_accessible: ['met', 'age', 'sex', 'rh', 'rt', 'out_t', 'out_rh', 'w_st', 'hr', 'bmi']`
 
 The pre-trained models can be imported as follows:
 
@@ -111,9 +103,9 @@ import pandas as pd
 # Load a pre-trained model
 model_path = "results/ET_best_model-F_accessible.pkl"  
 with open(model_path, "rb") as file:
-    model = pickle.load(file)
+    et_model = pickle.load(file)
 
-# Example input: replace with actual values for the selected feature set
+# Example input for f_accessible
 input_data = [[1.2, 30, 'Female', 39.77, 18.63, 1.336, 94.70, 28.582, 86.94, 22.83]]
 
 # Define column names
@@ -123,36 +115,17 @@ cols = ['met', 'age', 'sex', 'rh', 'rt', 'out_t', 'out_rh', 'w_st', 'hr', 'bmi']
 df = pd.DataFrame(input_data, columns=cols)
 
 # Run prediction (0:No change; -1:Cooler; 1:Warmer)
-prediction = model.predict(df)
+prediction = et_model.predict(df)
 print("Prediction:", prediction)
 ```
-
----
 
 ## **License**
 
 This project is licensed under the [MIT License](LICENSE.mos). 
 
----
-
-## **Contributions**
-
-Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-branch
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add new feature"
-   ```
-4. Push to the branch and submit a Pull Request.
-
----
 
 ## **Contact**
 
 info@dvg.tu-berlin.de
 
----
+j.odeyemi@tu-berlin.de
