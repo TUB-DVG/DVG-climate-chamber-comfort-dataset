@@ -20,7 +20,7 @@ The [raw datasets](dvg_climate_chamber_exp_raw_dataset) contains data collected 
 - **user_data.csv**: Contains demographic and physical information of participants.
 - **weather.csv**: Outdoor weather conditions during the study period.
 
-The [final dataset](dvg_climate_chamber_final_data.csv) contains 1,502 samples with 42 columns representing various user attributes and environmental conditions. Below is a summary of key variables. A detailed description of the columns is provided in the [Data Dictionary](data_dictionary.csv).
+The [final dataset](dvg_climate_chamber_final_data.csv) contains 1,502 samples with 42 columns representing various user attributes and environmental conditions. Below is a summary of key variables. A detailed description of the columns is provided in the [Data Dictionary](data_dictionary.csv). The data is provided in a CSV format, where each row represents a single observation. The variables value are averaged over the 10 minutes prior to the timestamp.
 
 - **lastdata**: Timestamp of each observation (YYYY-MM-DD HH:MM:SS).
 - **therm_sens**: Thermal sensation vote, on a scale from cold (1) to hot (7).
@@ -30,11 +30,7 @@ The [final dataset](dvg_climate_chamber_final_data.csv) contains 1,502 samples w
 - **clo**: Clothing Value (CLO) of the participants in the last 10 minutes. 
 - **Environmental and physiological metrics**: Various environmental parameters (e.g., room temperature, humidity, CO₂, air velocity) and physiological metrics (e.g., heart rate, wrist and ankle skin temperatures).
 
-The [processed dataset](processed_data.csv) contains the data cleaned and queried for the ML model development.
-
-### Data Format
-The data is provided in a CSV format, where each row represents a single observation. The variables value are averaged over the 10 minutes prior to the timestamp.
-
+The [processed dataset](processed_data.csv) contains the data cleaned and queried for the ML model development from the final_dataset.
 
 ## Contact
 For questions or further information, please reach out to Julianah Odeyemi at j.odeyemi@tu-berlin.de.
