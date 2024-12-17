@@ -35,8 +35,6 @@ The [processed dataset](processed_data.csv) contains the data cleaned and querie
 ### Data Format
 The data is provided in a CSV format, where each row represents a single observation. The variables value are averaged over the 10 minutes prior to the timestamp.
 
-## Acknowledgments
-Special thanks to RWTH Aachen University for providing access to the climate chamber facilities and supporting data collection efforts. Also to the Einstein Center Digital Future (ECDF), Berlin for funding this project.
 
 ## Contact
 For questions or further information, please reach out to Julianah Odeyemi at j.odeyemi@tu-berlin.de.
