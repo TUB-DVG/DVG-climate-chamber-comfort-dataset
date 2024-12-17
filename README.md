@@ -123,6 +123,8 @@ print("Prediction:", prediction)
 
 This project is licensed under the [MIT License](LICENSE.mos). 
 
+## **Acknowledgments**
+Special thanks to RWTH Aachen University for providing access to the climate chamber facilities and supporting data collection efforts. Also to the Einstein Center Digital Future (ECDF), Berlin for funding this project.
 
 ## **Contact**
 
