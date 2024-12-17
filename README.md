@@ -78,7 +78,7 @@ The script `model_train.py` trains machine learning models (ExtraTrees and SVC).
 
 -output_dir: Directory where model outputs and results will be saved
 
-Run the script as follows:
+Run the following script in the `model_script` directory
 ```bash
 python model_scripts/model_train.py --data_path ./data/processed_data.csv --output_dir ./results
 
