@@ -73,7 +73,6 @@ The project uses the following Python libraries:
 - `seaborn`
 
 ---
----
 
 ## **Data Preprocessing and Analysis**
 
@@ -84,7 +83,7 @@ The project uses the following Python libraries:
 
 ## **Model Training**
 
-The script `model_train.py` trains machine learning models (ExtraTrees and SVC). The results are saved in the `results/` folder as `.pkl` files for pre-trained models.
+The script `model_train.py` trains machine learning models (ExtraTrees and SVC). The results are saved in the `results/` folder as `.pkl` files for pre-trained models and `plot_results.ipynb` to visualize model performance.
 --data_path: Path to the processed data file
 --output_dir: Directory where model outputs and results will be saved
 
@@ -96,24 +95,14 @@ python model_scripts/model_train.py --data_path ./data/processed_data.csv --outp
 
 ---
 
-## **Results and Predictions**
-
-- **Pre-trained Models**:  
-   Pre-trained models are available in the `results/` folder as a .pkl file. These models include:  
-
-- **Visualizations**:  
-   Use `plot_results.ipynb` to visualize model performance and generate comparison plots.
-
----
-
 ## **Usage**
 - **Feature Sets**:
 The project uses three predefined feature sets for training the models. When using the pre-trained models or running predictions, input features must match one of these formats:
-    'F_fanger': ['rt', 'mrt', 'v', 'rh', 'clo', 'met'],
-    'F_all': ['met', 'age', 'sex', 'clo', 'CO2', 'rh', 'rt','out_t', 'out_rh', 'w_st', 'a_st', 'hr', 'v', 'bmi'],
-    'F_accessible': ['met', 'age', 'sex', 'rh', 'rt', 'out_t', 'out_rh', 'w_st', 'hr', 'bmi']
+    -F_fanger: ['rt', 'mrt', 'v', 'rh', 'clo', 'met'],
+    -F_all: ['met', 'age', 'sex', 'clo', 'CO2', 'rh', 'rt','out_t', 'out_rh', 'w_st', 'a_st', 'hr', 'v', 'bmi'],
+    -F_accessible: ['met', 'age', 'sex', 'rh', 'rt', 'out_t', 'out_rh', 'w_st', 'hr', 'bmi']
 
-You can load the pre-trained models as follows:
+The pre-trained models can be imported as follows:
 
 ```python
 import pickle
