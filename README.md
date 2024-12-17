@@ -1,4 +1,4 @@
-# **DVG Climate Chamber Analysis and Model Training**
+# **DVG Climate Chamber Comfort**
 
 ## **Project Overview**  
 This project focuses on analyzing climate chamber data, preprocessing it, and building machine learning models to predict thermal preference based on the data collected during a thermal comfort study at the climate chamber of RWTH Aachen University, Germany. The repository includes notebooks for Exploratory Data Analysis (EDA), scripts for model training, result analysis, and pre-trained models for quick predictions.
@@ -8,45 +8,52 @@ This project focuses on analyzing climate chamber data, preprocessing it, and bu
 ## **Repository Structure**  
 
 ```
-DVG-CLIMATE-CHAMBER-COMPOSITION/
+DVG-CLIMATE-CHAMBER-COMFORT-DATASET/
 │
-├── EDA_notebooks/            # Notebooks for exploratory data analysis
-│   ├── preprocessing.ipynb   # Data preprocessing notebook
-│   └── rawdata_analysis.ipynb # Initial raw data analysis
+├── data/                                        # Directory containing datasets and information about the experiment
+│   ├── ...                                 
+│   └── README.md                                   # Readme file for the dataset
 │
-├── EDA_plots/                # Folder for visualizations and EDA-related plots
+├── EDA_notebooks/                               # Notebooks for data preprocessing and exploratory data analysis
+│   ├── preprocessing.ipynb                         # Notebook for data cleaning and preprocessing
+│   └── rawdata_analysis.ipynb                      # Exploratory analysis of raw data
 │
-├── model_scripts/            # Scripts for training and evaluating models
-│   ├── config.py             # Configuration for model parameters
-│   ├── model_train.py        # Model training script
-│   └── plot_results.ipynb    # Notebook to visualize model results
+├── EDA_plots/                                   # Directory for storing generated EDA plots and visualizations
 │
-├── results/                  # Saved models and result files
-│   ├── ET_best_model-F_accessible.pkl    # Pre-trained ExtraTrees model (accessible)
-│   ├── ET_best_model-F_all.pkl           # ExtraTrees model (all features)
-│   ├── SVC_best_model-F_accessible.pkl   # SVC model (accessible features)
-│   ├── model_results.csv                 # Results in CSV format
-│   ├── model_results.json                # Results in JSON format
-│   ├── pred_results.json                 # Prediction results
-│   └── ...                               # Additional models and results
+├── model_scripts/                               # Scripts for model training and evaluation
+│   ├── config.py                                   # Configuration file for Gridsearch cv parameters and feature sets
+│   ├── model_train.py                              # Script for training machine learning models
+│   └── plot_results.ipynb                          # Notebook for generating and analyzing result plots
 │
-├── results_plots/            # Plots generated from model predictions and evaluations
+├── results/                                     # Saved models and output results
+│   ├── ET_best_model-F_accessible.pkl              # ExtraTrees model trained on f_accessible feature sets
+│   ├── ET_best_model-F_all.pkl                     # ExtraTrees model trained on f_all feature sets
+│   ├── ET_best_model-F_fanger.pkl                  # ExtraTrees model trained on f_fanger feature sets
+│   ├── model_results.csv                           # Model performance results in CSV format
+│   ├── model_results.json                          # Model performance results in JSON format
+│   ├── pred_results.json                           # Model predictions in JSON format
+│   ├── SVC_best_model-F_accessible.pkl             # SVC model trained on f_accessible feature sets
+│   ├── SVC_best_model-F_all.pkl                    # SVC model trained on f_all feature sets
+│   └── SVC_best_model-F_fanger.pkl                 # SVC model trained on f_fanger feature sets
 │
-├── data/                     # Placeholder for datasets
-├── data_dictionary.csv       # Metadata or description of the dataset columns
-├── requirements.txt          # Python dependencies
-├── README.md                 # Project documentation
-└── SubjectiveQs.pdf          # Supporting subjective questions
+├── results_plots/                               # Plots generated from model predictions and evaluations
+│
+├── requirements.txt                             # Python dependencies needed to run the project
+│
+├── LICENSE.mos                                  # MIT License file 
+│
+└── README.md                                    # Project documentation
+
 ```
 
 ---
 
-## **Setup Instructions**
+## **How to use**
 
 ### **1. Clone the Repository**
 ```bash
-git clone https://github.com/username/DVG-CLIMATE-CHAMBER-COMPOSITION.git
-cd DVG-CLIMATE-CHAMBER-COMPOSITION
+git clone https://github.com/username/DVG-CLIMATE-CHAMBER-COMFORT-DATASET.git
+cd DVG-CLIMATE-CHAMBER-COMFORT-DATASET
 ```
 
 ### **2. Set Up the Environment**  
@@ -54,67 +61,6 @@ Ensure you have Python 3.8+ installed. Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-
----
-
-## **Data Preprocessing and Analysis**
-
-- **Preprocessing**: Run the `preprocessing.ipynb` notebook to clean and preprocess the raw climate chamber data.  
-- **Raw Data Analysis**: Use `rawdata_analysis.ipynb` for initial EDA and insights into the dataset.
-
----
-
-## **Model Training**
-
-The script `model_train.py` trains machine learning models, such as ExtraTrees and SVC. The results are saved in the `results/` folder as `.pkl` files for pre-trained models.
-
-Run the script as follows:
-```bash
-python model_scripts/model_train.py
-```
-
----
-
-## **Results and Predictions**
-
-- **Pre-trained Models**:  
-   Pre-trained models are available in the `results/` folder. These models include:  
-   - `ET_best_model-F_accessible.pkl`  
-   - `SVC_best_model-F_accessible.pkl`  
-
-- **Visualizations**:  
-   Use `plot_results.ipynb` to visualize model performance and generate comparison plots.
-
----
-
-## **Usage**
-
-You can load the pre-trained models for inference as follows:
-
-```python
-import pickle
-
-# Load a pre-trained model
-with open("results/ET_best_model-F_accessible.pkl", "rb") as model_file:
-    model = pickle.load(model_file)
-
-# Example prediction
-example_input = [[1.2, 3.4, 5.6, 7.8]]  # Replace with actual feature values
-prediction = model.predict(example_input)
-print("Prediction:", prediction)
-```
-
----
-
-## **Results and Outputs**
-
-1. **Model Results**:
-   - Metrics like accuracy, precision, and recall are saved in `model_results.json`.
-   - CSV format results are available in `model_results.csv`.
-
-2. **Plots**:
-   - Visualizations for predictions and performance can be found in the `results_plots/` folder.
-
 ---
 
 ## **Dependencies**
@@ -126,23 +72,77 @@ The project uses the following Python libraries:
 - `matplotlib`
 - `seaborn`
 
-Install all dependencies via:
+---
+---
+
+## **Data Preprocessing and Analysis**
+
+- **Preprocessing**: Run the `preprocessing.ipynb` notebook to clean and preprocess the raw climate chamber data.  
+- **Raw Data Analysis**: Use `rawdata_analysis.ipynb` for initial EDA and insights into the dataset.
+
+---
+
+## **Model Training**
+
+The script `model_train.py` trains machine learning models (ExtraTrees and SVC). The results are saved in the `results/` folder as `.pkl` files for pre-trained models.
+--data_path: Path to the processed data file
+--output_dir: Directory where model outputs and results will be saved
+
+Run the script as follows:
 ```bash
-pip install -r requirements.txt
+python model_scripts/model_train.py --data_path ./data/processed_data.csv --output_dir ./results
+
 ```
 
 ---
 
-## **Dataset**
+## **Results and Predictions**
 
-- A detailed description of the dataset's features can be found in `data_dictionary.csv`.  
-- Add or download the dataset into the `data/` folder.
+- **Pre-trained Models**:  
+   Pre-trained models are available in the `results/` folder as a .pkl file. These models include:  
+
+- **Visualizations**:  
+   Use `plot_results.ipynb` to visualize model performance and generate comparison plots.
+
+---
+
+## **Usage**
+- **Feature Sets**:
+The project uses three predefined feature sets for training the models. When using the pre-trained models or running predictions, input features must match one of these formats:
+    'F_fanger': ['rt', 'mrt', 'v', 'rh', 'clo', 'met'],
+    'F_all': ['met', 'age', 'sex', 'clo', 'CO2', 'rh', 'rt','out_t', 'out_rh', 'w_st', 'a_st', 'hr', 'v', 'bmi'],
+    'F_accessible': ['met', 'age', 'sex', 'rh', 'rt', 'out_t', 'out_rh', 'w_st', 'hr', 'bmi']
+
+You can load the pre-trained models as follows:
+
+```python
+import pickle
+import pandas as pd
+
+# Load a pre-trained model
+model_path = "results/ET_best_model-F_accessible.pkl"  
+with open(model_path, "rb") as file:
+    model = pickle.load(file)
+
+# Example input: replace with actual values for the selected feature set
+input_data = [[1.2, 30, 'Female', 39.77, 18.63, 1.336, 94.70, 28.582, 86.94, 22.83]]
+
+# Define column names
+cols = ['met', 'age', 'sex', 'rh', 'rt', 'out_t', 'out_rh', 'w_st', 'hr', 'bmi']
+
+# Convert to DataFrame
+df = pd.DataFrame(input_data, columns=cols)
+
+# Run prediction (0:No change; -1:Cooler; 1:Warmer)
+prediction = model.predict(df)
+print("Prediction:", prediction)
+```
 
 ---
 
 ## **License**
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the [MIT License](LICENSE.mos). 
 
 ---
 
@@ -164,6 +164,6 @@ Contributions are welcome! Please follow these steps:
 
 ## **Contact**
 
-For questions or feedback, feel free to reach out via GitHub Issues or email.
+info@dvg.tu-berlin.de
 
 ---
