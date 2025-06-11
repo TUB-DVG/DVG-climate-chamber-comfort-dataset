@@ -2,7 +2,7 @@
 user_id,object,Unique identification of the participants.,22,,,
 lastdata,object,Timestamp of the observation.,,,,
 therm_sens,float64,Thermal sensation vote (1 = cold; 2 = cool; 3 = slightly cool;4 = neutral; 5 = slightly warm; 6 = warm; 7 = hot).,7,1.0 - 7.0,,
-therm_comfort,int64,Thermal comfort vote (1 = very uncomfortable;2 = uncomfortable; 3 = somewhat uncomfortable; 4 = somewhat comfortable; 5 = comfortable; 6 = very comfortabled).,6,1 - 6,,
+therm_comfort,int64,Thermal comfort vote (1 = very uncomfortable;2 = uncomfortable; 3 = somewhat uncomfortable; 4 = somewhat comfortable; 5 = comfortable; 6 = very comfortable).,6,1 - 6,,
 therm_pref,int64,Thermal preference vote (1 = cooler; 2 = no change; 3 = warmer).,3,1 - 3,,
 therm_accep,int64,Thermal acceptability vote (1 = acceptable; 2 = unacceptable).,2,1 - 2,,
 met,float64,"Activity level of participants in the last 10 minutes prior to observation in 'met' (0.8 = lying down; 1.0 = sitting, calm; 1.2 = standing, relaxed; 1.6 = light activity, standing; 2.0 = medium activity; standing; 1.7 = walking around).",6,0.8 - 2.0,,

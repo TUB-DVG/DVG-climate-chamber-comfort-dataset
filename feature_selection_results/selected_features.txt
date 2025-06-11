@@ -1,0 +1,12 @@
+num__age
+num__w_st
+num__a_st
+num__HR
+num__RH_in
+num__T_in
+num__CO_2
+num__V_a
+num__T_out
+num__RH_out
+num__clo
+num__BMI
