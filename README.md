@@ -85,19 +85,19 @@ python model_scripts/model_train.py --data_path data/processed_data.csv --output
 ## **Usage**
 ### **Feature Sets**:
 The project uses three predefined feature sets for training the models. When using the pre-trained models or running predictions, input features must match one of these formats:
-- **F_fanger**  
-    `['T_in', 'T_mrt', 'V_a', 'RH_in', 'clo', 'met']`
+- **F_fanger**
+      `['T_in', 'T_mrt', 'V_a', 'RH_in', 'clo', 'met']`
   
 - **F_selected**
-    `['age', 'clo', 'CO_2', 'RH_in', 'T_in', 'T_out', 'RH_out', 'w_st', 'a_st', 'HR', 'V_a', 'BMI']`
+      `['age', 'clo', 'CO_2', 'RH_in', 'T_in', 'T_out', 'RH_out', 'w_st', 'a_st', 'HR', 'V_a', 'BMI']`
 
-- **F_accessible** 
-    `['met', 'age', 'sex', 'RH_in', 'T_in', 'T_out', 'RH_out', 'w_st', 'HR', 'BMI']`
+- **F_accessible**
+      `['met', 'age', 'sex', 'RH_in', 'T_in', 'T_out', 'RH_out', 'w_st', 'HR', 'BMI']`
 
 ### **Model Testing**
 All model test scripts are located in the `tests/` folder. You can run all tests in the root folder.
- `test_fselected_model.py` Tests prediction using the `F_selected` feature set.
- `test_fanger_or_accessible.py` Tests prediction using either`F_accessible` or `F_fanger` feature set.
+- `test_fselected_model.py` Tests prediction using the `F_selected` feature set.
+- `test_fanger_or_accessible.py` Tests prediction using either`F_accessible` or `F_fanger` feature set.
 
 ## **License**
 
