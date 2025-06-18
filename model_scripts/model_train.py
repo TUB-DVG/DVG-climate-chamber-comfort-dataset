@@ -183,4 +183,4 @@ if __name__ == "__main__":
     train_models(data_path=args.data_path, output_dir=args.output_dir)
 
 
-#python model_train.py --data_path ..\data\processed_data.csv --output_dir ..\results
+#python model_train.py --data_path data\processed_data.csv --output_dir results

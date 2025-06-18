@@ -1,4 +1,4 @@
-#Grid Search CV
+#Random Search CV
 #model hyperparameters for Randomized search
 
 PARAM_GRID_ET_RF = {

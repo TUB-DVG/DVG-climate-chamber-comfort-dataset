@@ -4,7 +4,7 @@
 This folder contains data collected during a thermal comfort study at the climate chamber of RWTH Aachen University, Germany. The study, conducted between November 2023 and January 2024, aimed to collect user subjective responses to different room climate conditions. This dataset is available for research and analysis in indoor environmental quality, thermal comfort, and related fields.
 
 ## Data Collection Process
-Data was collected under controlled climate chamber conditions. Participants from diverse demographic groups were exposed to varying indoor conditions, such as temperature, humidity. During the study, participants answered a series of questions regarding their comfort levels, thermal preferences, and other relevant conditions at 10-minute interval. These questions aimed to capture subjective comfort perceptions alongside the environmental metrics recorded in the climate chamber. The questionaire used to collect subjective responses is available [here](SubjectiveQs.pdf) for reference.
+Data was collected under controlled climate chamber conditions. Participants from diverse demographic groups were exposed to varying indoor conditions, such as temperature, humidity. During the study, participants answered a series of questions regarding their comfort levels, thermal preferences, and other relevant conditions at 10-minute interval. These questions aimed to capture subjective comfort perceptions alongside the environmental metrics recorded in the climate chamber. The questionaire used to collect subjective responses is available [here](Questionnaire.pdf) for reference.
 
 ## Dataset Description
 The [raw datasets](dvg_climate_chamber_exp_raw_dataset) contains data collected from multiple devices and surveys throughout the experiment. Each file in the folder represents a different data source, ranging from environmental conditions to participant feedback and physiological data.
@@ -33,6 +33,6 @@ The [final dataset](dvg_climate_chamber_final_data.csv) contains 1,502 samples w
 The [processed dataset](processed_data.csv) contains the data cleaned and queried for the ML model development from the final_dataset.
 
 ## Contact
-For questions or further information, please reach out to Julianah Odeyemi at j.odeyemi@tu-berlin.de.
+For questions or further information, please reach out to Julianah Odeyemi at julianah.odeyemi@eonerc.rwth-aachen.de
 
 
