@@ -78,8 +78,7 @@ The script `model_train.py` trains machine learning models (Random forest, Extra
 
 Run the following script in the root folder.
 ```bash
-python model_scripts/model_train.py --data_path data/processed_data.csv --output_dir results
-
+python model_scripts/model_train.py 
 ```
 
 ## **Usage**

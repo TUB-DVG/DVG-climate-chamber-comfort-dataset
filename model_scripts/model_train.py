@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, cohen_kappa_score
 from sklearn.model_selection import train_test_split, RandomizedSearchCV, StratifiedKFold
 from sklearn.pipeline import Pipeline
@@ -14,48 +13,47 @@ import pickle
 import os
 import json
 import argparse
+from pathlib import Path
 from config import PARAM_GRID_ET_RF, PARAM_GRID_SVC, RANDOM_STATE, TEST_SIZE, N_SPLITS, FEATURE_SETS
 
 
 def wrangle_data(data_path):
     return pd.read_csv(data_path)
 
-
 def save_model(model, filename):
     with open(filename, 'wb') as file:
         pickle.dump(model, file)
-
 
 def save_train_results(results, output_dir):
     results_path = os.path.join(output_dir, 'model_results.json')
     with open(results_path, 'w') as file:
         json.dump(results, file, indent=4)
 
-
 def save_pred_results(results_y, output_dir):
     results_path = os.path.join(output_dir, 'pred_results.json')
     with open(results_path, 'w') as file:
         json.dump(results_y, file, indent=4)
 
-
-def train_models(data_path, output_dir):
+def train_models(data_path, output_dir, project_root):
     df = wrangle_data(data_path)
+    project_root = Path(project_root)
 
     results = {}
     results_y = {}
 
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    os.makedirs(output_dir, exist_ok=True)
 
     for feature_set_name, feature_cols in FEATURE_SETS.items():
         results[feature_set_name] = {}
         results_y[feature_set_name] = {}
 
         if feature_set_name == 'F_selected':
-            X_train = pd.read_csv('../feature_selection_results/X_train_selected.csv')
-            X_test = pd.read_csv('../feature_selection_results/X_test_selected.csv')
-            y_train = pd.read_csv('../feature_selection_results/y_train.csv').values.ravel()
-            y_test = pd.read_csv('../feature_selection_results/y_test.csv').values.ravel()
+            fs_path = project_root / "feature_selection_results"
+
+            x_train = pd.read_csv(fs_path / "X_train_selected.csv")
+            x_test = pd.read_csv(fs_path / "X_test_selected.csv")
+            y_train = pd.read_csv(fs_path / "y_train.csv").values.ravel()
+            y_test = pd.read_csv(fs_path / "y_test.csv").values.ravel()
 
             for model_name, base_model, param_grid in [
                 ('ET', ExtraTreesClassifier(random_state=RANDOM_STATE), PARAM_GRID_ET_RF),
@@ -66,7 +64,7 @@ def train_models(data_path, output_dir):
                     ('clf', base_model)
                 ])
                 smote = SMOTE(random_state=RANDOM_STATE)
-                X_train_smt, y_train_smt = smote.fit_resample(X_train, y_train)
+                x_train_smt, y_train_smt = smote.fit_resample(x_train, y_train)
 
                 search = RandomizedSearchCV(
                     estimator=pipeline,
@@ -78,11 +76,11 @@ def train_models(data_path, output_dir):
                     verbose=1,
                     error_score='raise'
                 )
-                search.fit(X_train_smt, y_train_smt)
+                search.fit(x_train_smt, y_train_smt)
 
                 best_model = search.best_estimator_
-                y_pred = best_model.predict(X_test)
-                y_proba = best_model.predict_proba(X_test)
+                y_pred = best_model.predict(x_test)
+                y_proba = best_model.predict_proba(x_test)
 
                 save_model(best_model, os.path.join(output_dir, f"{model_name}_best_model-{feature_set_name}.pkl"))
 
@@ -105,14 +103,14 @@ def train_models(data_path, output_dir):
                 }
 
         else:
-            X = df[feature_cols]
+            x = df[feature_cols]
             y = df['TPV']
-            X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=TEST_SIZE, stratify=y, random_state=RANDOM_STATE
+            x_train, x_test, y_train, y_test = train_test_split(
+                x, y, test_size=TEST_SIZE, stratify=y, random_state=RANDOM_STATE
             )
 
-            cat_attr = X.select_dtypes(include=['object']).columns.tolist()
-            num_attr = X.select_dtypes(exclude=['object']).columns.tolist()
+            cat_attr = x.select_dtypes(include=['object']).columns.tolist()
+            num_attr = x.select_dtypes(exclude=['object']).columns.tolist()
 
             num_pipeline = Pipeline([
                 ('imputer', KNNImputer(n_neighbors=5)),
@@ -126,7 +124,7 @@ def train_models(data_path, output_dir):
                 ("cat", cat_pipeline, cat_attr)
             ])
 
-            cat_indices = [X.columns.get_loc(col) for col in cat_attr]
+            cat_indices = [x.columns.get_loc(col) for col in cat_attr]
             smote = SMOTENC(categorical_features=cat_indices, random_state=RANDOM_STATE) if cat_attr else SMOTE(random_state=RANDOM_STATE)
 
             for model_name, model_pipeline, param_grid in [
@@ -144,11 +142,11 @@ def train_models(data_path, output_dir):
                     verbose=1,
                     error_score='raise'
                 )
-                search.fit(X_train, y_train)
+                search.fit(x_train, y_train)
 
                 best_model = search.best_estimator_
-                y_pred = best_model.predict(X_test)
-                y_proba = best_model.predict_proba(X_test)
+                y_pred = best_model.predict(x_test)
+                y_proba = best_model.predict_proba(x_test)
 
                 save_model(best_model, os.path.join(output_dir, f"{model_name}_best_model-{feature_set_name}.pkl"))
 
@@ -176,11 +174,27 @@ def train_models(data_path, output_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ET, RF and SVC model training for TPV prediction")
-    parser.add_argument("--data_path", type=str, required=True, help="processed dataset path")
-    parser.add_argument("--output_dir", type=str, default="output", help="saved results directory")
+    parser.add_argument("--data_path", type=str, default=None, help="Path to processed_data.csv")
+    parser.add_argument("--output_dir", type=str, default="results", help="saved results directory")
     args = parser.parse_args()
 
-    train_models(data_path=args.data_path, output_dir=args.output_dir)
+    script_file = Path(__file__).resolve()
+    project_root = script_file.parent.parent
+
+    # Data path
+    if args.data_path:
+        data_path = Path(args.data_path).resolve()
+    else:
+        data_path = project_root / "data" / "processed_data.csv"
+
+    if not data_path.exists():
+        raise FileNotFoundError(f"\nData file not found!\n   Expected: {data_path}\n"
+                                f"   Make sure 'data/processed_data.csv' exists in the project root.")
+
+    output_dir = project_root / args.output_dir
+    output_dir.mkdir(exist_ok=True)
+
+    train_models(data_path=str(data_path), output_dir=str(output_dir), project_root=str(project_root))
 
 
-#python model_train.py --data_path data\processed_data.csv --output_dir results
+#python model_scripts/model_train.py
