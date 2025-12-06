@@ -1,0 +1,170 @@
+{
+    "F_fanger": {
+        "ET": {
+            "model_name": "ET",
+            "feature_set": "F_fanger",
+            "best_params": {
+                "clf__n_estimators": 500,
+                "clf__min_samples_split": 10,
+                "clf__min_samples_leaf": 2,
+                "clf__max_features": null,
+                "clf__max_depth": 90,
+                "clf__criterion": "entropy",
+                "clf__bootstrap": true
+            },
+            "cv_accuracy": 0.7307063868201309,
+            "test_accuracy": 0.7671840354767184,
+            "test_precision": 0.7688537464919981,
+            "test_recall": 0.7753524941385722,
+            "test_f1": 0.7709327759692339,
+            "cohen_kappa": 0.6486261881265258
+        },
+        "RF": {
+            "model_name": "RF",
+            "feature_set": "F_fanger",
+            "best_params": {
+                "clf__n_estimators": 100,
+                "clf__min_samples_split": 10,
+                "clf__min_samples_leaf": 1,
+                "clf__max_features": null,
+                "clf__max_depth": 90,
+                "clf__criterion": "log_loss",
+                "clf__bootstrap": true
+            },
+            "cv_accuracy": 0.7421484992101106,
+            "test_accuracy": 0.7494456762749445,
+            "test_precision": 0.7504703542439392,
+            "test_recall": 0.7584663271080928,
+            "test_f1": 0.7535360093795056,
+            "cohen_kappa": 0.6220259285629525
+        },
+        "SVC": {
+            "model_name": "SVC",
+            "feature_set": "F_fanger",
+            "best_params": {
+                "clf__kernel": "rbf",
+                "clf__gamma": "scale",
+                "clf__degree": 3,
+                "clf__C": 1
+            },
+            "cv_accuracy": 0.7031189347777026,
+            "test_accuracy": 0.6807095343680709,
+            "test_precision": 0.6806370628918622,
+            "test_recall": 0.6979331392998626,
+            "test_f1": 0.6804071126520106,
+            "cohen_kappa": 0.5216052565670257
+        }
+    },
+    "F_selected": {
+        "ET": {
+            "model_name": "ET",
+            "feature_set": "F_selected",
+            "best_params": {
+                "clf__n_estimators": 200,
+                "clf__min_samples_split": 8,
+                "clf__min_samples_leaf": 1,
+                "clf__max_features": "log2",
+                "clf__max_depth": 30,
+                "clf__criterion": "entropy",
+                "clf__bootstrap": true
+            },
+            "cv_accuracy": 0.8243118948824343,
+            "test_accuracy": 0.8372093023255814,
+            "test_precision": 0.8419602529358627,
+            "test_recall": 0.8393598087025261,
+            "test_f1": 0.8405779312108427,
+            "cohen_kappa": 0.7531795970279135
+        },
+        "RF": {
+            "model_name": "RF",
+            "feature_set": "F_selected",
+            "best_params": {
+                "clf__n_estimators": 500,
+                "clf__min_samples_split": 8,
+                "clf__min_samples_leaf": 2,
+                "clf__max_features": "log2",
+                "clf__max_depth": 60,
+                "clf__criterion": "log_loss",
+                "clf__bootstrap": true
+            },
+            "cv_accuracy": 0.8151590594744121,
+            "test_accuracy": 0.8372093023255814,
+            "test_precision": 0.8441535531280923,
+            "test_recall": 0.8384571543345252,
+            "test_f1": 0.8407017579841657,
+            "cohen_kappa": 0.7529894490035169
+        },
+        "SVC": {
+            "model_name": "SVC",
+            "feature_set": "F_selected",
+            "best_params": {
+                "clf__kernel": "rbf",
+                "clf__gamma": "scale",
+                "clf__degree": 3,
+                "clf__C": 10
+            },
+            "cv_accuracy": 0.844280774550484,
+            "test_accuracy": 0.8172757475083057,
+            "test_precision": 0.8202569303583503,
+            "test_recall": 0.8218144644245086,
+            "test_f1": 0.8209844909928184,
+            "cohen_kappa": 0.7235026889801917
+        }
+    },
+    "F_accessible": {
+        "ET": {
+            "model_name": "ET",
+            "feature_set": "F_accessible",
+            "best_params": {
+                "clf__n_estimators": 200,
+                "clf__min_samples_split": 8,
+                "clf__min_samples_leaf": 1,
+                "clf__max_features": "log2",
+                "clf__max_depth": 30,
+                "clf__criterion": "entropy",
+                "clf__bootstrap": true
+            },
+            "cv_accuracy": 0.8211238997968856,
+            "test_accuracy": 0.7982261640798226,
+            "test_precision": 0.7986396175236917,
+            "test_recall": 0.8064314010833535,
+            "test_f1": 0.8017244494835776,
+            "cohen_kappa": 0.695710843373494
+        },
+        "RF": {
+            "model_name": "RF",
+            "feature_set": "F_accessible",
+            "best_params": {
+                "clf__n_estimators": 500,
+                "clf__min_samples_split": 8,
+                "clf__min_samples_leaf": 2,
+                "clf__max_features": "log2",
+                "clf__max_depth": 60,
+                "clf__criterion": "log_loss",
+                "clf__bootstrap": true
+            },
+            "cv_accuracy": 0.8087610020311441,
+            "test_accuracy": 0.8048780487804879,
+            "test_precision": 0.8062485342636944,
+            "test_recall": 0.8083098876222815,
+            "test_f1": 0.8072220698076293,
+            "cohen_kappa": 0.704810002305707
+        },
+        "SVC": {
+            "model_name": "SVC",
+            "feature_set": "F_accessible",
+            "best_params": {
+                "clf__kernel": "rbf",
+                "clf__gamma": "scale",
+                "clf__degree": 3,
+                "clf__C": 10
+            },
+            "cv_accuracy": 0.8173008350259534,
+            "test_accuracy": 0.7804878048780488,
+            "test_precision": 0.7818017385294126,
+            "test_recall": 0.787483224189506,
+            "test_f1": 0.7842600578843463,
+            "cohen_kappa": 0.6685276059955901
+        }
+    }
+}
