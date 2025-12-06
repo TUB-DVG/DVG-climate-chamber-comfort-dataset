@@ -23,6 +23,7 @@ RANDOM_STATE = 42
 #Test train size
 TEST_SIZE = 0.3
 N_SPLITS = 5
+N_REPEATS = 5
 
 #Define the 3 Feature sets
 #ID,TSV,TPV,met,age,sex,w_st,a_st,HR,T_g,RH_in,T_in,CO_2,V_a,T_out,RH_out,clo,BMI,T_mrt

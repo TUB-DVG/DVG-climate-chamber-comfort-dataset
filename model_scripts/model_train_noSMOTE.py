@@ -13,26 +13,10 @@ import json
 import argparse
 from pathlib import Path
 from config import PARAM_GRID_ET_RF, PARAM_GRID_SVC, RANDOM_STATE, TEST_SIZE, N_SPLITS, FEATURE_SETS
+from utils import wrangle_data, save_model, save_train_results, save_pred_results
 
 
-def wrangle_data(data_path):
-    return pd.read_csv(data_path)
-
-def save_model(model, filename):
-    with open(filename, 'wb') as file:
-        pickle.dump(model, file)
-
-def save_train_results(results, output_dir):
-    results_path = os.path.join(output_dir, 'model_results_noSMOTE.json')
-    with open(results_path, 'w') as file:
-        json.dump(results, file, indent=4)
-
-def save_pred_results(results_y, output_dir):
-    results_path = os.path.join(output_dir, 'pred_results_noSMOTE.json')
-    with open(results_path, 'w') as file:
-        json.dump(results_y, file, indent=4)
-
-def train_models(data_path, output_dir, project_root):
+def train_models_no_smote(data_path, output_dir, project_root):
     df = wrangle_data(data_path)
     project_root = Path(project_root)
 
@@ -192,6 +176,6 @@ if __name__ == "__main__":
     output_dir = project_root / args.output_dir
     output_dir.mkdir(exist_ok=True)
 
-    train_models(data_path=str(data_path), output_dir=str(output_dir), project_root=str(project_root))
+    train_models_no_smote(data_path=str(data_path), output_dir=str(output_dir), project_root=str(project_root))
 
 #python model_scripts/model_train_noSMOTE.py

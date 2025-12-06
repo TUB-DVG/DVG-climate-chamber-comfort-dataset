@@ -9,30 +9,12 @@ from sklearn.svm import SVC
 from sklearn.impute import KNNImputer
 from imblearn.pipeline import Pipeline as ImbPipeline
 from imblearn.over_sampling import SMOTENC, SMOTE
-import pickle
 import os
-import json
 import argparse
 from pathlib import Path
 from config import PARAM_GRID_ET_RF, PARAM_GRID_SVC, RANDOM_STATE, TEST_SIZE, N_SPLITS, FEATURE_SETS
+from utils import wrangle_data, save_model, save_train_results, save_pred_results
 
-
-def wrangle_data(data_path):
-    return pd.read_csv(data_path)
-
-def save_model(model, filename):
-    with open(filename, 'wb') as file:
-        pickle.dump(model, file)
-
-def save_train_results(results, output_dir):
-    results_path = os.path.join(output_dir, 'model_results.json')
-    with open(results_path, 'w') as file:
-        json.dump(results, file, indent=4)
-
-def save_pred_results(results_y, output_dir):
-    results_path = os.path.join(output_dir, 'pred_results.json')
-    with open(results_path, 'w') as file:
-        json.dump(results_y, file, indent=4)
 
 def train_models(data_path, output_dir, project_root):
     df = wrangle_data(data_path)
